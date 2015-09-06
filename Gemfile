@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails'
 gem 'rb-readline', require: false
 gem 'haml'
 gem 'haml-rails'
 # postgres database
-gem 'pg'
+gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
@@ -21,7 +21,7 @@ gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 # login
 gem 'devise'
 gem 'simple_form'
@@ -52,7 +52,6 @@ gem 'aws-sdk'
 
 group :development do
   gem 'quiet_assets'
-  gem 'bullet', git: 'git@github.com:flyerhzm/bullet.git'
   gem 'airbrake'
   gem 'annotate'
   gem 'pry-rails'
@@ -62,8 +61,6 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'cucumber'
-  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'multi_test'
   gem 'capybara'
@@ -83,8 +80,10 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'unicorn'
 end
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
 # Use unicorn as the app server
-ruby '2.0.0'
+
+

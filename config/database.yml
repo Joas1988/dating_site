@@ -1,29 +1,51 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+# Default setup is given for MySQL with ruby1.9.
+# Examples for PostgreSQL, SQLite3 and SQL Server can be found at the end.
+# Line indentation must be 2 spaces (no tabs).
+
+production:
+  adapter: mysql2
+  database: dating
+  host: localhost
+  username: root
+  password: "880526"
+  encoding: utf8
+
 development:
-  adapter: postgresql
-  database: datingSiteDevelopmentDB
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
+  database: dating
+  host: localhost
+  username: root
+  password: "880526"
+  encoding: utf8
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test: &test
-  adapter: postgresql
-  database: datingSiteTestDB
-  pool: 5
-  timeout: 5000
+test:
+  adapter: mysql2
+  database: dating_test
+  host: localhost
+  username: root
+  password: "880526"
+  encoding: utf8
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: datingSiteProductionDb
-  pool: 5
-  timeout: 5000
+# PostgreSQL configuration example
+#production:
+#  adapter: postgresql
+#  database: redmine
+#  host: localhost
+#  username: postgres
+#  password: "postgres"
 
-cucumber:
-  <<: *test
+# SQLite3 configuration example
+#production:
+#  adapter: sqlite3
+#  database: db/redmine.sqlite3
+
+# SQL Server configuration example
+#production:
+#  adapter: sqlserver
+#  database: redmine
+#  host: localhost
+#  username: jenkins
+#  password: jenkins

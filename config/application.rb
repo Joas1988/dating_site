@@ -32,7 +32,7 @@ module DatingSite
       enable_starttls_auto: true
     }
 
-    config.serve_static_assets = true
+    config.serve_static_files = true
 
     WillPaginate.per_page = 10
     begin
