@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
+//= require tether
+//= require bootstrap-sprockets
 //= require tinymce-jquery
 //= browser_timezone_rails/application.js
 //= require_tree .

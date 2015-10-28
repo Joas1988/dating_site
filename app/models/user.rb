@@ -37,14 +37,14 @@
 #
 
 class User < ActiveRecord::Base
+  include Geokit::Geocoders
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   acts_as_mappable lat_column_name: :latitude,
-                   lng_column_name: :longitude
-
-  attr_accessor :feet, :inches
+                   lng_column_name: :longitude,
+                   :default_units => :kms
 
   # username validations
   validates :username,
@@ -56,9 +56,7 @@ class User < ActiveRecord::Base
             presence: true,
             length: { is: 5 },
             format: { with: INTEGERS }
-  validate :zip_code_has_coords
   validate :over_18
-  validates :headline, length: 0..50
 
   # likes me
   has_many :liked_by, class_name: 'Like', as: :likeable, dependent: :destroy
@@ -88,9 +86,7 @@ class User < ActiveRecord::Base
   # pics
   has_many :pics
 
-  after_find :height_to_feet_and_inches
   before_save :set_coordinates
-  before_save :feet_and_inches_to_height
   before_destroy :remember_id
   after_destroy :remove_pics_and_directories
 
@@ -181,8 +177,11 @@ class User < ActiveRecord::Base
   end
 
   def set_coordinates
-    self.latitude = self.zip_code.to_lat.to_f
-    self.longitude = self.zip_code.to_lon.to_f
+    loc=MultiGeocoder.geocode(self.zip_code)
+    if loc.success
+    self.latitude = loc.lat
+    self.longitude = loc.lng
+    end
   end
 
   def pluralize(number, word)
@@ -200,27 +199,6 @@ class User < ActiveRecord::Base
     rescue => e
       puts e.message
     end
-  end
-
-  def height_to_feet_and_inches
-    self.feet = get_feet
-    self.inches = get_inches
-  end
-
-  def feet_and_inches_to_height
-    self.height = begin
-      feet.to_i * 12 + inches.to_i
-    rescue
-      0
-    end
-  end
-
-  def get_feet
-    height / 12
-  end
-
-  def get_inches
-    height % 12
   end
 
 end

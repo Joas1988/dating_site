@@ -41,22 +41,7 @@ body {
   margin: 30px 0 0 0;
 }
 
-.nav-tabs {
-  border-bottom: none;
 
-  li {
-    a {
-      border-color: rgb(221, 221, 221);
-      border-radius: 4px 4px 0 0;
-      border-style: solid;
-      border-width: 1px;
-    }
-
-    &:active a {
-      border-bottom: none;
-    }
-  }
-}
 
 .tab-pane {
   background-color: WHITE;
@@ -66,5 +51,3 @@ body {
   border-width: 1px;
   padding: 20px;
 }
-
-@import "bootstrap/theme";

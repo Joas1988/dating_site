@@ -14,7 +14,6 @@
       = "#{ @user.age } years old"
   .col-sm-6
     .pull-right
-      = @user.region
       %br
       %br
 .row
@@ -44,7 +43,7 @@
           %tbody
             %tr
               %td Height
-              %td= "#{ @user.feet }' #{ @user.inches }\""
+              %td= "#{@user.height}"
             %tr
               %td Body Type
               %td= BODY_TYPE[@user.body_type]

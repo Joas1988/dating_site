@@ -35,7 +35,7 @@ module ApplicationHelper
 
   def host
     if Rails.env.production?
-      ''
+      'https://spolukbohu.cz'
     else
       'http://localhost:3000/'
     end
@@ -51,7 +51,7 @@ module ApplicationHelper
       likes: header_hash("Likes#{ likes_badge }", likes_path),
       blocked: header_hash("Blocked#{ blockers_badge }", blocked_users_path),
       my_profile: header_hash('My Profile', current_user),
-      logout: header_hash('Logout', destroy_user_session_path, :delete) }
+      logout: header_hash('Logout', destroy_user_session_path) }
   end
 
   def format_time(time)
@@ -99,7 +99,8 @@ module ApplicationHelper
     {
       text: text,
       path: path,
-      id: "header_#{id}"
+      id: "header_#{id}",
+      class: 'nav-link'
     }.tap { |hash| hash[:method] = method if method }
   end
 

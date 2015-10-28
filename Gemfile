@@ -6,7 +6,7 @@ gem 'rb-readline', require: false
 gem 'haml'
 gem 'haml-rails'
 # postgres database
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,13 +32,11 @@ gem 'tinymce-rails'
 # pagination
 gem 'will_paginate'
 # bootstrap
-gem 'bootstrap-will_paginate', git: 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 
 gem 'newrelic_rpm'
 
 gem 'geokit-rails'
-gem 'area'
 
 # images upload/resize
 gem 'carrierwave'
@@ -55,6 +53,8 @@ group :development do
   gem 'airbrake'
   gem 'annotate'
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -85,5 +85,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Use unicorn as the app server
+gem 'unicorn', platform: :ruby
+gem 'thin', platforms: [:mingw, :mswin, :x64_mingw]
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 
